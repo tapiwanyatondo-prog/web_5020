@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t d">
+<title id="t">Car approaching the Kamado Car Wash entrance</title><desc id="d">A red car drives towards the tunnel entrance, past a payment kiosk and a yellow DRIVE IN sign.</desc>
+<rect width="800" height="500" fill="#DCEAF0"/><line x1="100" y1="72" x2="100" y2="380" stroke="#C9DDE5" stroke-width="2"/><line x1="200" y1="72" x2="200" y2="380" stroke="#C9DDE5" stroke-width="2"/><line x1="300" y1="72" x2="300" y2="380" stroke="#C9DDE5" stroke-width="2"/><line x1="400" y1="72" x2="400" y2="380" stroke="#C9DDE5" stroke-width="2"/><line x1="500" y1="72" x2="500" y2="380" stroke="#C9DDE5" stroke-width="2"/><line x1="600" y1="72" x2="600" y2="380" stroke="#C9DDE5" stroke-width="2"/><line x1="700" y1="72" x2="700" y2="380" stroke="#C9DDE5" stroke-width="2"/>
+<rect width="800" height="64" fill="#0B4F6C"/><rect y="64" width="800" height="8" fill="#FFC145"/>
+<rect y="380" width="800" height="120" fill="#10242E"/><rect x="20" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="100" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="180" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="260" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="340" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="420" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="500" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="580" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="660" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/><rect x="740" y="436" width="44" height="6" rx="3" fill="#FFC145" opacity=".9"/>
+<line x1="230" y1="72" x2="230" y2="380" stroke="#FFC145" stroke-width="3" stroke-dasharray="6 8" opacity=".8"/><circle cx="230" cy="86" r="9" fill="#FFC145"/><rect x="96" y="210" width="30" height="170" rx="6" fill="#0B4F6C"/><rect x="78" y="196" width="66" height="60" rx="8" fill="#10242E"/><rect x="90" y="208" width="42" height="6" rx="3" fill="#FFC145"/><rect x="90" y="222" width="30" height="6" rx="3" fill="#fff"/><rect x="90" y="236" width="36" height="6" rx="3" fill="#fff"/><line x1="330" y1="72" x2="330" y2="110" stroke="#10242E" stroke-width="3"/><line x1="470" y1="72" x2="470" y2="110" stroke="#10242E" stroke-width="3"/><rect x="300" y="110" width="200" height="50" rx="8" fill="#FFC145"/><text x="400" y="147" text-anchor="middle" font-family="Bebas Neue, Impact, Arial Narrow, sans-serif" font-size="38" letter-spacing="3" fill="#10242E">DRIVE IN</text><path d="M250,420 L272,436 L250,452 L260,452 L282,436 L260,420 Z" fill="#FFC145"/><path d="M300,420 L322,436 L300,452 L310,452 L332,436 L310,420 Z" fill="#FFC145"/><path d="M350,420 L372,436 L350,452 L360,452 L382,436 L360,420 Z" fill="#FFC145"/><g transform="translate(560,380) scale(0.92)">
+  <ellipse cx="0" cy="2" rx="200" ry="9" fill="#000" opacity=".25"/>
+  <path d="M-180,-22 L-180,-56 Q-180,-66 -168,-68 L-122,-72 L-84,-112 Q-80,-116 -72,-116 L28,-116 Q38,-116 46,-108 L98,-72 L160,-66 Q180,-62 180,-48 L180,-22 Z" fill="#EF5B5B"/>
+  <rect x="-180" y="-34" width="360" height="12" fill="#C94545"/>
+  <path d="M-114,-76 L-84,-108 L-40,-108 L-40,-76 Z" fill="#CBE6F0"/>
+  <path d="M-30,-108 L24,-108 Q30,-108 35,-103 L72,-76 L-30,-76 Z" fill="#CBE6F0"/>
+  <line x1="-34" y1="-72" x2="-34" y2="-34" stroke="#C94545" stroke-width="3"/>
+  <rect x="-24" y="-66" width="20" height="5" rx="2.5" fill="#C94545"/>
+  <rect x="164" y="-58" width="14" height="9" rx="3" fill="#FFC145"/>
+  <rect x="-179" y="-56" width="8" height="12" rx="3" fill="#8E2B2B"/>
+  <circle cx="-110" cy="-26" r="31" fill="#0c1d26"/><circle cx="110" cy="-26" r="31" fill="#0c1d26"/>
+  <circle cx="-110" cy="-26" r="26" fill="#10242E"/><circle cx="110" cy="-26" r="26" fill="#10242E"/>
+  <circle cx="-110" cy="-26" r="14" fill="#9FB4BD"/><circle cx="110" cy="-26" r="14" fill="#9FB4BD"/>
+  <circle cx="-110" cy="-26" r="5" fill="#10242E"/><circle cx="110" cy="-26" r="5" fill="#10242E"/>
+</g>
+</svg>

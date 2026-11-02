@@ -1,0 +1,1339 @@
+/* =============================================================
+   KAMADO CAR WASH — STYLESHEET
+   Part 2: CSS Styling and Responsive Design
+   Part 3: functionality, forms and SEO additions (sections 13-24, below)
+
+   Table of contents (search these labels to jump around):
+     1. Design tokens (colours, fonts, spacing)
+     2. CSS Reset
+     3. Base styles
+     4. Typography scale
+     5. Buttons
+     6. Header / Navigation (responsive, no JS required)
+     7. Hero
+     8. Wash-lane diagram (Flexbox + Grid)
+     9. Feature / pricing / value grids (CSS Grid)
+    10. Forms
+    11. Footer (CSS Grid with named areas)
+    12. Responsive breakpoints (tablet + mobile)
+    13-24. Part 3 additions (see the second contents list further down)
+   ============================================================= */
+
+/* Fonts are self-hosted (Latin subset, woff2) so the page never waits on a
+   third-party request. font-display: swap shows text immediately. */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../fonts/BebasNeue.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/WorkSans.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -------------------------------------------------------------
+   1. DESIGN TOKENS
+   Centralising colours/fonts here means the whole site restyles
+   from one place — this is the "cascading" advantage of CSS.
+   ------------------------------------------------------------- */
+:root {
+  /* Colour scheme */
+  --color-bg: #EDF3F5;
+  --color-surface: #FFFFFF;
+  --color-ink: #10242E;
+  --color-ink-soft: #4A5D68;
+  --color-primary: #0B4F6C;
+  --color-primary-light: #1C7293;
+  --color-accent-yellow: #FFC145;
+  --color-accent-coral: #EF5B5B;
+  --color-coral-deep: #C23B3B;   /* text/fills that need AA contrast */
+  --color-danger: #B42318;
+  --color-success: #1F7A4D;
+  --color-line: #D3E1E6;
+
+  /* Font families */
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Spacing / layout, all in relative units so they scale with
+     the user's font-size settings (accessibility requirement) */
+  --max-width: 71.25rem;   /* 1140px */
+  --radius: 0.625rem;      /* 10px */
+  --gap: 1.5rem;
+}
+
+/* -------------------------------------------------------------
+   2. CSS RESET
+   Removes each browser's own default spacing/sizing so the site
+   looks the same in Chrome, Firefox, Edge, Safari, etc.
+   ------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%; /* 1rem = 16px by default, respects user browser settings */
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+ul, ol { list-style: none; }
+
+button, input, select, textarea { font: inherit; }
+
+/* -------------------------------------------------------------
+   3. BASE STYLES
+   ------------------------------------------------------------- */
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* -------------------------------------------------------------
+   4. TYPOGRAPHY SCALE
+   A consistent set of sizes/weights/line-heights/letter-spacing
+   rather than one-off values scattered through the page.
+   ------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400; /* Bebas Neue only ships one weight */
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--color-primary);
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
+h3, h4 { font-size: 1.3rem; line-height: 1.2; }
+
+p {
+  color: var(--color-ink-soft);
+  font-size: 1rem;
+  max-width: 60ch; /* keeps line length readable */
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+/* -------------------------------------------------------------
+   5. BUTTONS
+   Demonstrates :hover, :focus-visible and :active pseudo-classes.
+   ------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-accent-yellow);
+  color: var(--color-ink);
+  box-shadow: 4px 4px 0 var(--color-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-surface);
+  color: var(--color-surface);
+}
+
+.btn-outline.dark {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent-coral);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------
+   6. HEADER / NAVIGATION
+   Built with Flexbox. The nav list uses flex-wrap so it drops to
+   a stacked menu on narrow screens WITHOUT needing JavaScript —
+   the old hamburger button is kept in the markup but hidden here,
+   since it has no script behind it any more.
+   ------------------------------------------------------------- */
+.site-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+
+.logo span.drop { color: var(--color-accent-coral); }
+
+/* The button is no longer wired to JS, so it's removed from the
+   visual layout and from screen-reader/tab order. */
+.nav-toggle {
+  display: none;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.main-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  padding-block: 0.4rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-accent-coral);
+}
+
+.main-nav a:focus-visible {
+  outline: 2px solid var(--color-accent-coral);
+  outline-offset: 3px;
+}
+
+/* -------------------------------------------------------------
+   7. HERO
+   ------------------------------------------------------------- */
+.hero {
+  background: var(--color-primary);
+  color: var(--color-surface);
+  padding-block: 4rem 3rem;
+}
+
+.hero h1 { color: var(--color-surface); }
+.hero .eyebrow { color: var(--color-accent-yellow); }
+
+.hero p.lead {
+  color: #CFE3EA;
+  font-size: 1.1rem;
+  margin-block: 1.2rem 1.8rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* -------------------------------------------------------------
+   8. WASH-LANE DIAGRAM
+   Flexbox for the animated marker layer, CSS Grid for the five
+   stage cards underneath.
+   ------------------------------------------------------------- */
+.lane { background: var(--color-surface); padding-block: 4rem; }
+
+.lane-heading { max-width: 46ch; margin-bottom: 2.5rem; }
+
+.lane-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  padding-top: 2.5rem;
+}
+
+.lane-track::before {
+  content: "";
+  position: absolute;
+  top: 0.9rem;
+  left: 4%;
+  right: 4%;
+  height: 2px;
+  background-image: repeating-linear-gradient(to right, var(--color-line) 0 10px, transparent 10px 20px);
+}
+
+/* .lane-stage .num is styled in section 15 (animated states). */
+
+.lane-stage h3 { margin-block: 0.6rem 0.4rem; font-size: 1.05rem; }
+.lane-stage p { font-size: 0.9rem; }
+
+/* -------------------------------------------------------------
+   9. FEATURE / PRICING / VALUE GRIDS
+   All three reuse the same CSS Grid pattern, so one rule change
+   here updates every grid on the site (the "cascade" in action).
+   ------------------------------------------------------------- */
+.feature-grid,
+.pricing-grid,
+.value-grid {
+  display: grid;
+  gap: var(--gap);
+}
+
+.feature-grid,
+.pricing-grid { grid-template-columns: repeat(3, 1fr); }
+.value-grid { grid-template-columns: repeat(2, 1fr); }
+
+.feature-grid { padding-block: 4rem; }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(11, 79, 108, 0.12);
+  transform: translateY(-3px);
+}
+
+.card h3, .card h4 { color: var(--color-primary); margin-bottom: 0.5rem; }
+.card p { font-size: 0.95rem; }
+
+.cta-band {
+  background: var(--color-accent-yellow);
+  padding-block: 3rem;
+  text-align: center;
+}
+
+.cta-band h2 { color: var(--color-ink); }
+.cta-band p { margin: 0.8rem auto 1.5rem; color: var(--color-ink); }
+
+.section { padding-block: 3.5rem; }
+.section-alt { background: var(--color-surface); }
+.section h2 { margin-bottom: 1rem; }
+.section > .wrap > p.lead { font-size: 1.05rem; max-width: 65ch; margin-bottom: 2rem; }
+
+.plan {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.plan.featured {
+  border-color: var(--color-accent-coral);
+  box-shadow: 0 0 0 2px var(--color-accent-coral);
+}
+
+.plan .price {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.plan .price span { font-size: 0.9rem; color: var(--color-ink-soft); }
+
+.plan ul li {
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+  padding-block: 0.25rem;
+  border-top: 1px dashed var(--color-line);
+}
+.plan ul li:first-child { border-top: none; }
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+}
+
+.location-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.location-card .details { padding: 1.4rem 1.6rem; }
+.location-card h3 { margin-bottom: 0.3rem; }
+.location-card .hours {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-primary-light);
+  margin-top: 0.6rem;
+}
+
+/* -------------------------------------------------------------
+   10. FORMS
+   Visual styling plus :focus states for accessible keyboard use.
+   ------------------------------------------------------------- */
+form.card-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.form-row { margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; }
+
+.form-row label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  transition: border-color 0.15s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+}
+
+.checkbox-row { flex-direction: row; align-items: center; gap: 0.6rem; }
+.checkbox-row label { text-transform: none; letter-spacing: normal; font-size: 0.9rem; }
+
+/* -------------------------------------------------------------
+   11. FOOTER
+   Uses grid-template-areas so the layout reads clearly by name
+   rather than by column position.
+   ------------------------------------------------------------- */
+.site-footer {
+  background: var(--color-ink);
+  color: #B9CBD2;
+  padding-block: 2.5rem;
+  margin-top: 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas: "brand site visit";
+  gap: 2rem;
+}
+
+.footer-grid > :nth-child(1) { grid-area: brand; }
+.footer-grid > :nth-child(2) { grid-area: site; }
+.footer-grid > :nth-child(3) { grid-area: visit; }
+
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--color-surface);
+  margin-bottom: 0.8rem;
+}
+
+/* The global p rule uses a dark grey, which is unreadable on the dark footer. */
+.site-footer p { color: #B9CBD2; }
+.site-footer a:hover { color: var(--color-accent-yellow); }
+
+.footer-bottom {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #7C8F97;
+  border-top: 1px solid #26414C;
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+}
+
+/* =============================================================
+   12. RESPONSIVE BREAKPOINTS
+   Two breakpoints: tablet (<=60rem / 960px) and mobile
+   (<=40rem / 640px). Layouts move from multi-column to
+   single-column as the screen narrows.
+   ============================================================= */
+
+/* ---- Tablet ---- */
+@media (max-width: 60rem) {
+  .feature-grid,
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .lane-track { grid-template-columns: repeat(3, 1fr); }
+  .lane-track::before { display: none; }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "brand brand"
+      "site  visit";
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 40rem) {
+  html { font-size: 93.75%; } /* slightly smaller base (15px) to suit small screens */
+
+  .feature-grid,
+  .pricing-grid,
+  .value-grid,
+  .location-grid { grid-template-columns: 1fr; }
+
+  .lane-track { grid-template-columns: 1fr; gap: 2rem; }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "site"
+      "visit";
+  }
+
+  .site-header .wrap { justify-content: center; text-align: center; }
+
+  .main-nav ul { justify-content: center; gap: 1rem 1.25rem; }
+
+  .hero { padding-block: 2.75rem 2rem; text-align: center; }
+  .hero-actions { justify-content: center; }
+  .hero p.lead { margin-inline: auto; }
+
+  form.card-form { padding: 1.4rem; }
+}
+
+/* =============================================================
+   PART 3 ADDITIONS
+   13. Accessibility helpers
+   14. Header, footer and small shared components
+   15. Wash-lane animation (home page)
+   16. Stats strip (about page)
+   17. Gallery and lightbox (about page)
+   18. Service catalogue: search, filter, sort (services page)
+   19. Forms: groups, validation states, results
+   20. FAQ accordion (enquiry page)
+   21. Branch cards and interactive map (contact page)
+   22. Utilities (these replace the old inline style="" attributes)
+   23. Reduced motion
+   24. Responsive additions
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   13. ACCESSIBILITY HELPERS
+   ------------------------------------------------------------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-accent-yellow);
+  color: var(--color-ink);
+  font-weight: 600;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius);
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus { top: 1rem; }
+
+:focus-visible {
+  outline: 3px solid var(--color-accent-coral);
+  outline-offset: 2px;
+}
+
+address { font-style: normal; }
+
+/* -------------------------------------------------------------
+   14. HEADER, FOOTER AND SMALL SHARED COMPONENTS
+   ------------------------------------------------------------- */
+.site-header { transition: box-shadow 0.2s ease; }
+.site-header.is-scrolled { box-shadow: 0 6px 18px rgba(16, 36, 46, 0.1); }
+
+/* "Open now" / "Closed" badge, filled in by common.js */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: #DDF3E6;
+  color: #0F4A2C;
+}
+
+.status-pill::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-pill.is-closed { background: #FBE4E4; color: #7A1F1F; }
+.status-pill:empty { display: none; }
+
+.footer-grid li { padding-block: 0.15rem; }
+.site-footer li a { text-decoration: underline; text-underline-offset: 3px; }
+
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 0.6rem;
+}
+
+.share a { text-decoration: underline; text-underline-offset: 3px; }
+.share a:hover { color: var(--color-accent-yellow); }
+
+.to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 40;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 12px rgba(16, 36, 46, 0.25);
+  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.15s ease;
+}
+
+.to-top.is-visible { opacity: 1; visibility: visible; }
+.to-top:hover { background: var(--color-primary-light); }
+
+.text-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.text-link:hover { color: var(--color-primary-light); }
+
+/* -------------------------------------------------------------
+   15. WASH-LANE ANIMATION
+   When the lane scrolls into view, common.js adds .lane-run once.
+   A car drives through at a constant speed (like a real tunnel
+   conveyor) and each stage number fills in as the car reaches it.
+   ------------------------------------------------------------- */
+.lane-track .lane-car { display: none; }
+
+.lane-stage:nth-of-type(1) { --i: 0; }
+.lane-stage:nth-of-type(2) { --i: 1; }
+.lane-stage:nth-of-type(3) { --i: 2; }
+.lane-stage:nth-of-type(4) { --i: 3; }
+.lane-stage:nth-of-type(5) { --i: 4; }
+
+.lane-stage .num {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-coral-deep);
+  background: var(--color-surface);
+  border: 2px solid var(--color-accent-coral);
+  border-radius: 999px;
+  padding: 0.05rem 0.65rem;
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+.lane-run .lane-stage .num {
+  background: var(--color-coral-deep);
+  border-color: var(--color-coral-deep);
+  color: var(--color-surface);
+  transition-delay: calc(var(--i, 0) * 1.12s + 0.55s);
+}
+
+@media (min-width: 60.0625rem) {
+  .lane-track .lane-car {
+    display: block;
+    position: absolute;
+    top: 0.12rem;
+    left: 2%;
+    width: 3.9rem;
+    height: 1.55rem;
+    background: url("../images/kamado-car-wash-lane-marker.svg") center / contain no-repeat;
+  }
+
+  .lane-run .lane-car { animation: laneDrive 5.6s linear 0.3s both; }
+}
+
+@keyframes laneDrive {
+  from { left: 2%; }
+  to   { left: calc(96% - 3.9rem); }
+}
+
+.lane-intro { margin-top: 0.8rem; }
+
+/* -------------------------------------------------------------
+   16. STATS STRIP
+   ------------------------------------------------------------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.stat { border-top: 4px solid var(--color-accent-yellow); padding-top: 0.9rem; }
+
+.stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.4rem;
+  max-width: 22ch;
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+}
+
+/* -------------------------------------------------------------
+   17. GALLERY AND LIGHTBOX
+   ------------------------------------------------------------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.gallery figure {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.gallery-link { display: block; overflow: hidden; }
+
+.gallery-link img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.gallery-link:hover img { transform: scale(1.04); }
+
+.gallery figcaption {
+  padding: 0.8rem 1rem 1rem;
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+}
+
+.gallery figcaption strong { display: block; color: var(--color-primary); font-size: 1rem; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(92vw, 60rem);
+  max-height: 94vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox.is-open { opacity: 1; transform: none; }
+.lightbox::backdrop { background: rgba(16, 36, 46, 0.88); }
+
+.lightbox-figure {
+  margin: 0;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lightbox-figure img {
+  width: 100%;
+  height: auto;
+  max-height: 68vh;
+  object-fit: contain;
+  background: var(--color-bg);
+  transition: opacity 0.15s ease;
+}
+
+.lightbox-figure img.is-swapping { opacity: 0; }
+
+.lightbox-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem 1.1rem;
+}
+
+.lightbox-caption p { max-width: none; font-size: 0.95rem; }
+.lightbox-count { font-family: var(--font-mono); font-size: 0.8rem; white-space: nowrap; }
+
+.lightbox-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent-yellow);
+  color: var(--color-ink);
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-btn:hover { background: #ffd070; }
+.lightbox-close { top: -1.2rem; right: -0.8rem; }
+.lightbox-prev  { top: 40%; left: -1.2rem; }
+.lightbox-next  { top: 40%; right: -1.2rem; }
+
+/* -------------------------------------------------------------
+   18. SERVICE CATALOGUE (search / filter / sort)
+   The controls only appear once the data has loaded
+   (.catalogue.is-dynamic); otherwise the static price list shows.
+   ------------------------------------------------------------- */
+.catalogue-tools { display: none; gap: 1rem 1.5rem; align-items: end; margin-bottom: 1.2rem; }
+
+.catalogue.is-dynamic .catalogue-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) auto minmax(0, 0.8fr);
+}
+
+.catalogue-tools .form-row { margin-bottom: 0; }
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.chip-group legend {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.4rem;
+  padding: 0;
+}
+
+.chip { position: relative; }
+
+.chip input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.chip:hover span { border-color: var(--color-primary-light); }
+
+.chip input:checked + span {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.chip input:focus-visible + span { outline: 3px solid var(--color-accent-coral); outline-offset: 2px; }
+
+.catalogue-count {
+  max-width: none;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+}
+
+.catalogue-fallback > div + div { margin-top: 3rem; }
+.catalogue-fallback h3 { margin-bottom: 1rem; font-size: 1.6rem; }
+
+.plan-tag {
+  align-self: flex-start;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.plan .price strong { font-weight: inherit; }
+.plan-summary { font-size: 0.95rem; }
+.plan-cta { align-self: flex-start; margin-top: auto; }
+
+mark {
+  padding: 0 0.12em;
+  border-radius: 3px;
+  background: var(--color-accent-yellow);
+  color: var(--color-ink);
+}
+
+.catalogue-empty {
+  grid-column: 1 / -1;
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius);
+}
+
+.catalogue-empty p { margin: 0.5rem auto 1.2rem; }
+
+/* -------------------------------------------------------------
+   19. FORMS: groups, validation states, results
+   ------------------------------------------------------------- */
+.form-note { margin-bottom: 1.2rem; font-size: 0.9rem; }
+
+.form-group {
+  min-width: 0;
+  margin: 0 0 1.2rem;
+  padding: 1.1rem 1.2rem 0.4rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+.form-group legend {
+  padding-inline: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+/* Conditional groups stay visible without JavaScript;
+   with JavaScript only the one that matches the enquiry type shows. */
+.js .form-group[data-for]:not(.is-active) { display: none; }
+.form-group.is-active { animation: groupIn 0.25s ease both; }
+
+@keyframes groupIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.5rem 0.8rem;
+  min-width: 0;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  border: 0;
+}
+
+.check-grid legend {
+  margin-bottom: 0.4rem;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+}
+
+.check { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; }
+
+.check input,
+.checkbox-row input {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--color-primary);
+}
+
+.field-hint { max-width: none; font-size: 0.82rem; color: var(--color-ink-soft); }
+
+.field-error {
+  max-width: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-danger);
+}
+
+.field-error[hidden] { display: none; }
+
+.form-row input.is-invalid,
+.form-row select.is-invalid,
+.form-row textarea.is-invalid {
+  border-color: var(--color-danger);
+  background: #FFF5F4;
+}
+
+.form-row input.is-valid,
+.form-row select.is-valid,
+.form-row textarea.is-valid { border-color: var(--color-success); }
+
+.form-summary {
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.2rem;
+  border: 2px solid var(--color-danger);
+  border-radius: var(--radius);
+  background: #FFF5F4;
+}
+
+.form-summary[hidden] { display: none; }
+.form-summary:focus { outline: 3px solid var(--color-accent-coral); outline-offset: 2px; }
+.form-summary p { max-width: none; color: var(--color-danger); font-weight: 600; }
+.form-summary ul { margin-top: 0.5rem; padding-left: 1.2rem; list-style: disc; }
+.form-summary li { padding-block: 0.15rem; }
+.form-summary a { color: var(--color-danger); text-decoration: underline; }
+
+.char-count { max-width: none; text-align: right; font-size: 0.8rem; color: var(--color-ink-soft); }
+.char-count.is-near { color: var(--color-danger); font-weight: 600; }
+
+/* Honeypot field: hidden from people, tempting to spam bots */
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+.btn[disabled] { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+.btn.is-loading::after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.6rem;
+  vertical-align: -0.15em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.btn-small { padding: 0.55rem 1rem; font-size: 0.8rem; }
+
+/* Result panel shown after a valid submit */
+.result {
+  max-width: 40rem;
+  padding: 1.8rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-left: 6px solid var(--color-accent-yellow);
+  border-radius: var(--radius);
+}
+
+.result:focus { outline: none; }
+.result h2 { margin-bottom: 0.4rem; font-size: clamp(1.7rem, 3vw, 2.2rem); }
+
+.result-ref {
+  max-width: none;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-primary-light);
+}
+
+.result-banner { max-width: none; margin-bottom: 1rem; padding: 0.7rem 1rem; border-radius: 8px; font-size: 0.92rem; }
+.result-banner.is-ok   { background: #E3F3E8; color: #14532D; }
+.result-banner.is-warn { background: #FFF4DB; color: #6B4200; }
+
+.result-table { width: 100%; margin-block: 1rem; border-collapse: collapse; }
+
+.result-table th,
+.result-table td {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px dashed var(--color-line);
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+.result-table td:last-child { text-align: right; font-family: var(--font-mono); }
+.result-table .is-total th,
+.result-table .is-total td { border-top: 2px solid var(--color-primary); border-bottom: 0; font-weight: 700; }
+
+.availability {
+  margin-block: 1rem;
+  padding: 0.9rem 1rem;
+  background: var(--color-bg);
+  border-left: 5px solid var(--color-line);
+  border-radius: 0 8px 8px 0;
+}
+
+.availability[data-level="quiet"]    { border-left-color: var(--color-success); }
+.availability[data-level="moderate"] { border-left-color: #B7791F; }
+.availability[data-level="busy"]     { border-left-color: var(--color-danger); }
+.availability p { max-width: none; }
+.availability strong { color: var(--color-ink); }
+
+.result-notes { margin-block: 1rem; padding-left: 1.2rem; list-style: disc; }
+.result-notes li { padding-block: 0.2rem; font-size: 0.95rem; color: var(--color-ink-soft); }
+.result-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
+
+.email-preview {
+  max-height: 18rem;
+  margin-block: 1rem;
+  padding: 1rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-ink);
+}
+
+/* -------------------------------------------------------------
+   20. FAQ ACCORDION (jQuery slide animation)
+   ------------------------------------------------------------- */
+.accordion { max-width: 48rem; border-top: 1px solid var(--color-line); }
+.accordion-item { border-bottom: 1px solid var(--color-line); }
+.accordion-heading { margin: 0; font-size: inherit; line-height: 1; }
+
+.accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.1rem 0.2rem;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.accordion-trigger:hover { color: var(--color-primary-light); }
+
+.accordion-trigger::after {
+  content: "+";
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.accordion-trigger[aria-expanded="true"]::after { transform: rotate(45deg); }
+
+.accordion-panel { padding: 0 0.2rem 1.3rem; }
+.accordion-panel p { max-width: 62ch; }
+.js .accordion-panel { display: none; }
+
+/* -------------------------------------------------------------
+   21. BRANCH CARDS AND INTERACTIVE MAP
+   ------------------------------------------------------------- */
+.map-tools { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.5rem 0 0.6rem; }
+.map-tools .btn { display: none; }
+.js .map-tools .btn { display: inline-block; }
+
+.map-status { max-width: none; min-height: 1.6em; margin-bottom: 1rem; font-size: 0.95rem; }
+
+.branch-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: var(--gap);
+  align-items: start;
+}
+
+.branch-list { display: grid; gap: var(--gap); }
+
+.location-card { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.location-card.is-selected { border-color: var(--color-primary-light); }
+.location-card.is-nearest { border-color: var(--color-accent-coral); box-shadow: 0 0 0 2px var(--color-accent-coral); }
+.location-card p a { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.location-card .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+.location-card [data-show-on-map] { display: none; }
+.js .location-card [data-show-on-map] { display: inline-block; }
+
+.map {
+  position: relative;
+  z-index: 0;
+  height: 30rem;
+  overflow: hidden;
+  background: #CFE3EA;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+.map-fallback { max-width: none; padding: 1.2rem; }
+
+.map-pin {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 3px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-coral-deep);
+  box-shadow: 0 2px 8px rgba(16, 36, 46, 0.45);
+  color: var(--color-surface);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.map-popup strong { display: block; color: var(--color-primary); }
+.map-popup a { color: var(--color-primary); font-weight: 600; text-decoration: underline; }
+
+/* Placeholder text: the browser default grey is too light on the pale background. */
+::placeholder { color: #5F6F78; opacity: 1; }
+
+/* -------------------------------------------------------------
+   22. UTILITIES (replace the old inline style="" attributes)
+   ------------------------------------------------------------- */
+.mt-md { margin-top: 1.5rem; }
+.mt-lg { margin-top: 2rem; }
+.feature-grid--tight { padding-block: 1.5rem 0; }
+.section-intro { max-width: 65ch; margin-bottom: 2rem; font-size: 1.05rem; }
+.lane-intro { max-width: 52ch; }
+
+/* -------------------------------------------------------------
+   23. REDUCED MOTION
+   ------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lane-track .lane-car { display: none !important; }
+}
+
+/* -------------------------------------------------------------
+   24. RESPONSIVE ADDITIONS
+   ------------------------------------------------------------- */
+@media (max-width: 60rem) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .branch-layout { grid-template-columns: 1fr; }
+
+  .catalogue.is-dynamic .catalogue-tools { grid-template-columns: 1fr 1fr; }
+  .catalogue.is-dynamic .catalogue-tools .search-row { grid-column: 1 / -1; }
+}
+
+@media (max-width: 40rem) {
+  .stats { gap: 1.2rem; }
+  .gallery { grid-template-columns: 1fr; }
+  .catalogue.is-dynamic .catalogue-tools { grid-template-columns: 1fr; }
+  .map { height: 22rem; }
+  .result { padding: 1.3rem; }
+  .form-group { padding-inline: 0.9rem; }
+  .accordion-trigger { font-size: 1.25rem; }
+
+  .lightbox-prev { left: 0.3rem; }
+  .lightbox-next { right: 0.3rem; }
+  .lightbox-close { top: 0.4rem; right: 0.4rem; }
+  .lightbox-btn { width: 2.6rem; height: 2.6rem; }
+}

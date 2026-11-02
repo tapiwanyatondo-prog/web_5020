@@ -1,0 +1,5 @@
+# Kamado Car Wash: tells search engine crawlers what they may visit.
+User-agent: *
+Allow: /
+
+Sitemap: https://kamado-car-wash.netlify.app/sitemap.xml

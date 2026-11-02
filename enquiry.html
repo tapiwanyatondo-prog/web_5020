@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=&#x27;; style-src &#x27;self&#x27;; style-src-attr &#x27;unsafe-inline&#x27;; img-src &#x27;self&#x27; data: https://tile.openstreetmap.org; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27; https://jsonplaceholder.typicode.com; form-action &#x27;self&#x27; https://jsonplaceholder.typicode.com; base-uri &#x27;self&#x27;; object-src &#x27;none&#x27;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Get a Car Wash Quote or Fleet Enquiry | Kamado Car Wash</title>
+  <meta name="description" content="Request a car wash quote, check availability, compare unlimited memberships, or ask about fleet accounts and Kamado franchise opportunities.">
+  <meta name="keywords" content="car wash quote, fleet car wash Johannesburg, car wash franchise South Africa, unlimited car wash membership">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://kamado-car-wash.netlify.app/enquiry.html">
+  <meta name="theme-color" content="#0B4F6C">
+
+  <!-- Open Graph / Twitter: controls how the page looks when shared on social media -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kamado Car Wash">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:title" content="Get a Car Wash Quote or Fleet Enquiry | Kamado Car Wash">
+  <meta property="og:description" content="Request a car wash quote, check availability, compare unlimited memberships, or ask about fleet accounts and Kamado franchise opportunities.">
+  <meta property="og:url" content="https://kamado-car-wash.netlify.app/enquiry.html">
+  <meta property="og:image" content="https://kamado-car-wash.netlify.app/images/kamado-car-wash-social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kamado Car Wash: spotless in four minutes flat">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Get a Car Wash Quote or Fleet Enquiry | Kamado Car Wash">
+  <meta name="twitter:description" content="Request a car wash quote, check availability, compare unlimited memberships, or ask about fleet accounts and Kamado franchise opportunities.">
+  <meta name="twitter:image" content="https://kamado-car-wash.netlify.app/images/kamado-car-wash-social-card.png">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- Page speed: preload the two fonts used above the fold, scripts are deferred -->
+  <link rel="preload" href="fonts/WorkSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/BebasNeue.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Marks the page as "JavaScript available" so CSS can avoid a flash of unstyled content -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/common.js" defer></script>
+  <script src="js/vendor/jquery-3.7.1.min.js" defer></script>
+  <script src="js/services-data.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/enquiry.js" defer></script>
+  <script src="js/faq.js" defer></script>
+
+  <!-- Structured data (schema.org) helps search engines understand the business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need to book a wash?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Kamado is a drive through wash, so you can arrive at any time between 07:00 and 17:00 and drive in. The time slots in the enquiry form only assists you pick a less busier time. They are not bookings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a wash take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All three packages are done within four minutes from the kiosk to the dryers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my membership work at both branches?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Unlimited memberships are valid at both the Sandton and Randburg branches."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I cancel an unlimited membership?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you are able to cancel at any time. Inform us through the contact form or at either branch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does a fleet plan include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fleet plans are for three or more vehicles and includes a monthly consolidated invoice and a dedicated account contact. Pricing is custom, so send a fleet enquiry and we shall get back to you with a suitable price."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the vacuum free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, every wash includes ten minutes at our self service vacuum and mat shampoo bays at free of charge."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ HEADER / NAVIGATION ============
+       Repeated on every page so the links work identically across the whole site. -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">Kamado<span class="drop"> Car Wash</span></a>
+
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+        Menu ☰
+      </button>
+
+      <nav class="main-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="enquiry.html" aria-current="page">Enquire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ PAGE INTRO ============ -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Enquiries</p>
+        <h1>Ask us<br>anything.</h1>
+        <p class="lead">
+          Whether it is a question about a package, a fleet account, or
+          bringing a Kamado Car Wash site to your area, inform us down below and our
+          team will reply within 1-2 business days.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ ENQUIRY FORM ============
+         Choosing an enquiry type shows the matching fields (js/enquiry.js).
+         When the input is valid it is sent with fetch() to the form's action URL and
+         the page answers with a price estimate and availability, without reloading. -->
+    <section class="section">
+      <div class="wrap">
+        <h2 id="form-title">Get a price, a comparison or a reply</h2>
+        <p class="section-intro">Tell us what you need and you will get an answer on this page straight away.</p>
+
+        <form class="card-form" id="enquiry-form" action="https://jsonplaceholder.typicode.com/posts" method="post" aria-labelledby="form-title">
+          <p class="form-note">Fields marked * are required. We only use your details to answer this enquiry.</p>
+
+          <div class="form-row">
+            <label for="full-name">Full name *</label>
+            <input type="text" id="full-name" name="fullName" autocomplete="name" placeholder="e.g. Naledi Khumalo" required minlength="2" maxlength="60" data-rule="name">
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email address *</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required maxlength="254" data-rule="email">
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone number *</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="071 234 5678" required maxlength="20" data-rule="phone" pattern="(?:\+27|0027|0)[\s\-]?[1-9](?:[\s\-]?[0-9]){8}">
+          </div>
+
+          <div class="form-row">
+            <label for="branch">Preferred branch *</label>
+            <select id="branch" name="branch" required>
+              <option value="">Choose a branch</option>
+              <option value="sandton">Sandton</option>
+              <option value="randburg">Randburg</option>
+              <option value="either">No preference</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="enquiry-type">What would you like to know? *</label>
+            <select id="enquiry-type" name="enquiryType" required>
+              <option value="">Choose an enquiry type</option>
+              <option value="quote">The price of a single wash</option>
+              <option value="membership">Unlimited membership</option>
+              <option value="fleet">Fleet account (3+ vehicles)</option>
+              <option value="franchise">Franchise opportunity</option>
+              <option value="feedback">Feedback about a visit</option>
+            </select>
+          </div>
+
+          <!-- Groups below appear only for the matching enquiry type -->
+          <fieldset class="form-group" data-for="quote">
+            <legend>Your wash</legend>
+            <div class="form-row">
+              <label for="package">Package *</label>
+              <select id="package" name="package" required>
+                <option value="">Choose a package</option>
+                <option value="express">Express</option>
+                <option value="deluxe">Deluxe</option>
+                <option value="ultimate">Ultimate</option>
+              </select>
+            </div>
+            <fieldset class="check-grid">
+              <legend>Add-ons (optional)</legend>
+              <label class="check"><input type="checkbox" id="addon-vacuum" name="addons" value="interior-vacuum">Interior vacuum &amp; wipe-down</label>
+              <label class="check"><input type="checkbox" id="addon-tyre" name="addons" value="tyre-shine">Tyre shine</label>
+              <label class="check"><input type="checkbox" id="addon-air" name="addons" value="air-freshener">Air freshener</label>
+            </fieldset>
+            <div class="form-row">
+              <label for="visit-date">Planned visit date *</label>
+              <input type="date" id="visit-date" name="visitDate" required>
+            </div>
+            <div class="form-row">
+              <label for="visit-time">Planned arrival time *</label>
+              <select id="visit-time" name="visitTime" required></select>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group" data-for="membership">
+            <legend>Your membership</legend>
+            <div class="form-row">
+              <label for="plan">Membership plan *</label>
+              <select id="plan" name="plan" required>
+                <option value="">Choose a plan</option>
+                <option value="unlimited-express">Unlimited Express</option>
+                <option value="unlimited-deluxe">Unlimited Deluxe</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="washes-per-month">Washes you expect each month *</label>
+              <input type="number" id="washes-per-month" name="washesPerMonth" inputmode="numeric" min="1" max="60" step="1" required placeholder="e.g. 6">
+            </div>
+            <div class="form-row">
+              <label for="start-date">Preferred start date *</label>
+              <input type="date" id="start-date" name="startDate" required>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group" data-for="fleet">
+            <legend>Your fleet</legend>
+            <div class="form-row">
+              <label for="vehicles">Number of vehicles *</label>
+              <input type="number" id="vehicles" name="vehicles" inputmode="numeric" min="3" max="500" step="1" required placeholder="3 or more">
+            </div>
+            <div class="form-row">
+              <label for="fleet-washes">Washes per vehicle each month *</label>
+              <input type="number" id="fleet-washes" name="fleetWashes" inputmode="numeric" min="1" max="30" step="1" required placeholder="e.g. 4">
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group" data-for="franchise">
+            <legend>Your area</legend>
+            <div class="form-row">
+              <label for="area">Where would you like a Kamado site? *</label>
+              <input type="text" id="area" name="area" required minlength="3" maxlength="80" placeholder="e.g. Pretoria East">
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group" data-for="feedback">
+            <legend>Your visit</legend>
+            <div class="form-row">
+              <label for="feedback-date">Date of your visit *</label>
+              <input type="date" id="feedback-date" name="feedbackDate" required>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" minlength="10" maxlength="500" placeholder="Anything else we should know?"></textarea>
+            <p class="field-hint">Optional for prices and memberships. Required for franchise and feedback enquiries.</p>
+            <p class="char-count" id="message-count" aria-hidden="true">0 / 500</p>
+          </div>
+
+          <div class="form-row checkbox-row">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">I agree that Kamado Car Wash may use these details to reply to my enquiry. *</label>
+          </div>
+
+          <!-- Honeypot: people never see this field, spam bots fill it in -->
+          <div class="hp" aria-hidden="true">
+            <label for="company-website">Leave this field empty</label>
+            <input type="text" id="company-website" name="companyWebsite" tabindex="-1" autocomplete="off" data-hp>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Get my answer</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FAQ (jQuery accordion) ============ -->
+    <section class="section section-alt" id="faq" aria-labelledby="faq-heading">
+      <div class="wrap">
+        <p class="eyebrow">Quick answers</p>
+        <h2 id="faq-heading">Frequently asked questions</h2>
+        <div class="accordion mt-md">
+          <div class="accordion-item">
+            <h3 class="accordion-heading">
+              <button type="button" class="accordion-trigger" id="faq-q1" aria-expanded="true" aria-controls="faq-a1">Do I need to book a wash?</button>
+            </h3>
+            <div class="accordion-panel" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <p>No. Kamado is a drive-through wash, so you can arrive at any time between 07:00 and 17:00 and drive straight in. The time slots in the enquiry form only help you pick a quieter moment. They are not bookings.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-heading">
+              <button type="button" class="accordion-trigger" id="faq-q2" aria-expanded="true" aria-controls="faq-a2">How long does a wash take?</button>
+            </h3>
+            <div class="accordion-panel" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <p>All three packages take under four minutes from the kiosk to the dryers.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-heading">
+              <button type="button" class="accordion-trigger" id="faq-q3" aria-expanded="true" aria-controls="faq-a3">Does my membership work at both branches?</button>
+            </h3>
+            <div class="accordion-panel" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <p>Yes. Unlimited memberships are valid at both Sandton and Randburg.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-heading">
+              <button type="button" class="accordion-trigger" id="faq-q4" aria-expanded="true" aria-controls="faq-a4">Can I cancel an unlimited membership?</button>
+            </h3>
+            <div class="accordion-panel" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <p>Yes, you can cancel at any time. Let us know through the contact form or at either branch.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-heading">
+              <button type="button" class="accordion-trigger" id="faq-q5" aria-expanded="true" aria-controls="faq-a5">What does a fleet plan include?</button>
+            </h3>
+            <div class="accordion-panel" id="faq-a5" role="region" aria-labelledby="faq-q5">
+              <p>Fleet plans are for three or more vehicles and include a monthly consolidated invoice and a dedicated account contact. Pricing is custom, so send a fleet enquiry and we will come back to you with a price.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-heading">
+              <button type="button" class="accordion-trigger" id="faq-q6" aria-expanded="true" aria-controls="faq-a6">Is the vacuum really free?</button>
+            </h3>
+            <div class="accordion-panel" id="faq-a6" role="region" aria-labelledby="faq-q6">
+              <p>Every wash includes ten minutes at our self-service vacuum and mat-shampoo bays at no extra cost.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ALTERNATIVE CONTACT ============ -->
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Prefer to call?</p>
+        <h2>Reach us directly</h2>
+        <p class="lead">
+          Call Sandton on <a class="text-link" href="tel:+27115550142">011&nbsp;555&nbsp;0142</a> or Randburg on
+          <a class="text-link" href="tel:+27118429697">011&nbsp;842&nbsp;9697</a> during opening hours (07:00&ndash;17:00, seven
+          days a week), or see full branch details and an interactive map on our
+          <a class="text-link" href="contact.html#branches">Contact page</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-heading">Kamado Car Wash</p>
+        <p>Johannesburg's automated drive-through wash. Two lanes, five stages, one very clean car.</p>
+      </div>
+      <nav aria-label="Footer">
+        <p class="footer-heading">Site</p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="enquiry.html">Enquire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-heading">Visit</p>
+        <ul>
+          <li>Sandton &amp; Randburg</li>
+          <li>Open daily, 07:00&ndash;17:00</li>
+          <li><span class="status-pill" data-open-status></span></li>
+          <li>Sandton: <a href="tel:+27115550142">011&nbsp;555&nbsp;0142</a></li>
+          <li>Randburg: <a href="tel:+27118429697">011&nbsp;842&nbsp;9697</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      &copy; 2026 Kamado Car Wash.
+    </div>
+  </footer>
+</body>
+</html>

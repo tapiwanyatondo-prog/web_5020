@@ -1,0 +1,57 @@
+{
+  "currency": "ZAR",
+  "updated": "2026-10-29",
+  "items": [
+    {
+      "id": "express", "category": "wash", "name": "Express", "price": 65, "unit": "wash", "featured": false,
+      "summary": "The essential four-minute clean.",
+      "features": ["Pre-soak & foam bath", "Cloth mitter wash", "High-pressure rinse", "Turbo air dry"],
+      "includes": [], "keywords": ["basic", "standard", "cheap", "quick"]
+    },
+    {
+      "id": "deluxe", "category": "wash", "name": "Deluxe", "price": 100, "unit": "wash", "featured": true,
+      "summary": "Adds wheel cleaning, a wax finish and tyre shine.",
+      "features": ["Everything in Express", "Wheel & rim brush cycle", "Spray wax finish", "Tyre shine"],
+      "includes": ["tyre-shine"], "keywords": ["wax", "wheels", "rims", "popular"]
+    },
+    {
+      "id": "ultimate", "category": "wash", "name": "Ultimate", "price": 150, "unit": "wash", "featured": false,
+      "summary": "Our full treatment, with underbody flush and ceramic sealant.",
+      "features": ["Everything in Deluxe", "Underbody flush", "Ceramic sealant coat", "Interior vacuum & mat wash included"],
+      "includes": ["tyre-shine", "interior-vacuum"], "keywords": ["premium", "ceramic", "underbody", "full"]
+    },
+    {
+      "id": "interior-vacuum", "category": "addon", "name": "Interior vacuum & wipe-down", "price": 45, "unit": "add-on", "featured": false,
+      "summary": "Full interior vacuum plus a dashboard and console wipe-down at our self-service bay.",
+      "features": [], "includes": [], "keywords": ["vacuum", "interior", "dashboard", "mats"]
+    },
+    {
+      "id": "tyre-shine", "category": "addon", "name": "Tyre shine", "price": 25, "unit": "add-on", "featured": false,
+      "summary": "A durable, non-greasy shine applied after the dry cycle.",
+      "features": [], "includes": [], "keywords": ["tires", "tyres", "wheels", "gloss"]
+    },
+    {
+      "id": "air-freshener", "category": "addon", "name": "Air freshener", "price": 20, "unit": "add-on", "featured": false,
+      "summary": "Choose from four scents at the kiosk before you enter the lane.",
+      "features": [], "includes": [], "keywords": ["scent", "smell", "fragrance"]
+    },
+    {
+      "id": "unlimited-express", "category": "membership", "name": "Unlimited Express", "price": 270, "unit": "month", "package": "express", "featured": false,
+      "summary": "Wash as often as you like with the Express package.",
+      "features": ["Unlimited Express washes", "Valid at both locations", "Cancel any time"],
+      "includes": [], "keywords": ["subscription", "monthly", "commuter"]
+    },
+    {
+      "id": "unlimited-deluxe", "category": "membership", "name": "Unlimited Deluxe", "price": 395, "unit": "month", "package": "deluxe", "featured": true,
+      "summary": "Unlimited Deluxe washes with a priority lane on weekends.",
+      "features": ["Unlimited Deluxe washes", "Valid at both locations", "Priority lane on weekends"],
+      "includes": [], "keywords": ["subscription", "monthly", "weekend"]
+    },
+    {
+      "id": "fleet", "category": "membership", "name": "Fleet plan", "price": null, "unit": "custom", "featured": false,
+      "summary": "For businesses washing three or more vehicles.",
+      "features": ["For 3+ vehicles", "Monthly consolidated invoice", "Dedicated account contact"],
+      "includes": [], "keywords": ["business", "company", "delivery", "vehicles", "invoice"]
+    }
+  ]
+}

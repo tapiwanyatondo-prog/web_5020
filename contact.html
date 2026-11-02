@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=&#x27;; style-src &#x27;self&#x27;; style-src-attr &#x27;unsafe-inline&#x27;; img-src &#x27;self&#x27; data: https://tile.openstreetmap.org; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27; https://jsonplaceholder.typicode.com; form-action &#x27;self&#x27; https://jsonplaceholder.typicode.com; base-uri &#x27;self&#x27;; object-src &#x27;none&#x27;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Contact Kamado Car Wash | Sandton &amp; Randburg Branches</title>
+  <meta name="description" content="Find Kamado Car Wash in Sandton and Randburg: addresses, phone numbers, opening hours (07:00-17:00 daily), an interactive map and a contact form.">
+  <meta name="keywords" content="Kamado Car Wash Sandton address, car wash Randburg phone, car wash opening hours Johannesburg, contact Kamado Car Wash">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://kamado-car-wash.netlify.app/contact.html">
+  <meta name="theme-color" content="#0B4F6C">
+
+  <!-- Open Graph / Twitter: controls how the page looks when shared on social media -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kamado Car Wash">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:title" content="Contact Kamado Car Wash | Sandton &amp; Randburg Branches">
+  <meta property="og:description" content="Find Kamado Car Wash in Sandton and Randburg: addresses, phone numbers, opening hours (07:00-17:00 daily), an interactive map and a contact form.">
+  <meta property="og:url" content="https://kamado-car-wash.netlify.app/contact.html">
+  <meta property="og:image" content="https://kamado-car-wash.netlify.app/images/kamado-car-wash-social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kamado Car Wash: spotless in four minutes flat">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Kamado Car Wash | Sandton &amp; Randburg Branches">
+  <meta name="twitter:description" content="Find Kamado Car Wash in Sandton and Randburg: addresses, phone numbers, opening hours (07:00-17:00 daily), an interactive map and a contact form.">
+  <meta name="twitter:image" content="https://kamado-car-wash.netlify.app/images/kamado-car-wash-social-card.png">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- Page speed: preload the two fonts used above the fold, scripts are deferred -->
+  <link rel="preload" href="fonts/WorkSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/BebasNeue.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+
+  <link rel="stylesheet" href="css/leaflet-1.9.4.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Marks the page as "JavaScript available" so CSS can avoid a flash of unstyled content -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/common.js" defer></script>
+  <script src="js/vendor/leaflet-1.9.4.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/contact-form.js" defer></script>
+  <script src="js/map.js" defer></script>
+
+  <!-- Structured data (schema.org) helps search engines understand the business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "url": "https://kamado-car-wash.netlify.app/contact.html",
+        "name": "Contact Kamado Car Wash",
+        "about": {
+          "@id": "https://kamado-car-wash.netlify.app/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://kamado-car-wash.netlify.app/#organization",
+        "name": "Kamado Car Wash",
+        "url": "https://kamado-car-wash.netlify.app/",
+        "logo": "https://kamado-car-wash.netlify.app/images/apple-touch-icon.png",
+        "foundingDate": "2019",
+        "description": "Automated drive-through car wash with two branches in Johannesburg."
+      },
+      {
+        "@type": "AutoWash",
+        "@id": "https://kamado-car-wash.netlify.app/contact.html#sandton",
+        "name": "Kamado Car Wash Sandton",
+        "url": "https://kamado-car-wash.netlify.app/contact.html",
+        "image": "https://kamado-car-wash.netlify.app/images/kamado-car-wash-social-card.png",
+        "telephone": "+27 11 555 0142",
+        "priceRange": "R65-R150",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "92 Lenovo Street",
+          "addressLocality": "Sandton",
+          "addressRegion": "Gauteng",
+          "postalCode": "2196",
+          "addressCountry": "ZA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -26.1075,
+          "longitude": 28.0567
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "07:00",
+            "closes": "17:00"
+          }
+        ],
+        "parentOrganization": {
+          "@id": "https://kamado-car-wash.netlify.app/#organization"
+        }
+      },
+      {
+        "@type": "AutoWash",
+        "@id": "https://kamado-car-wash.netlify.app/contact.html#randburg",
+        "name": "Kamado Car Wash Randburg",
+        "url": "https://kamado-car-wash.netlify.app/contact.html",
+        "image": "https://kamado-car-wash.netlify.app/images/kamado-car-wash-social-card.png",
+        "telephone": "+27 11 842 9697",
+        "priceRange": "R65-R150",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "78 Republic Road",
+          "addressLocality": "Randburg",
+          "addressRegion": "Gauteng",
+          "postalCode": "2194",
+          "addressCountry": "ZA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -26.0955,
+          "longitude": 28.007
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "07:00",
+            "closes": "17:00"
+          }
+        ],
+        "parentOrganization": {
+          "@id": "https://kamado-car-wash.netlify.app/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ HEADER / NAVIGATION ============
+       Repeated on every page so the links work identically across the whole site. -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">Kamado<span class="drop"> Car Wash</span></a>
+
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+        Menu ☰
+      </button>
+
+      <nav class="main-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="enquiry.html">Enquire</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ PAGE INTRO ============ -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Find Us</p>
+        <h1>Two lanes,<br>one call away.</h1>
+        <p class="lead">
+          Both branches are open seven days a week. Pick whichever is
+          closer &mdash; your membership works at both.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ LOCATIONS ============
+         Two branches. js/map.js builds an interactive Leaflet map from the data-* attributes
+         on each card, so the address text below is the single source of truth. -->
+    <section class="section" id="branches">
+      <div class="wrap">
+        <p class="eyebrow">Our Branches</p>
+        <h2>Sandton &amp; Randburg</h2>
+
+        <div class="map-tools">
+          <button type="button" class="btn btn-primary" id="find-nearest">Find my nearest branch</button>
+          <button type="button" class="btn btn-outline dark" id="show-both">Show both branches</button>
+        </div>
+        <p class="map-status" id="map-status" role="status"></p>
+
+        <div class="branch-layout">
+          <div class="branch-list">
+          <article class="location-card" id="sandton" data-branch="sandton" data-name="Kamado Car Wash Sandton" data-initial="S" data-lat="-26.1075" data-lng="28.0567">
+            <div class="details">
+              <h3>Kamado Car Wash Sandton</h3>
+              <address>92 Lenovo Street, Sandton, Johannesburg, 2196</address>
+              <p><a href="tel:+27115550142">011&nbsp;555&nbsp;0142</a></p>
+              <p class="hours">Mon&ndash;Sun: 07:00&ndash;17:00</p>
+              <p><span class="status-pill" data-open-status></span></p>
+              <div class="actions">
+                <button type="button" class="btn btn-primary btn-small" data-show-on-map>Show on map</button>
+                <a class="btn btn-outline dark btn-small" href="https://www.google.com/maps/dir/?api=1&amp;destination=-26.1075,28.0567" target="_blank" rel="noopener noreferrer">Get directions</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="location-card" id="randburg" data-branch="randburg" data-name="Kamado Car Wash Randburg" data-initial="R" data-lat="-26.0955" data-lng="28.007">
+            <div class="details">
+              <h3>Kamado Car Wash Randburg</h3>
+              <address>78 Republic Road, Randburg, Johannesburg, 2194</address>
+              <p><a href="tel:+27118429697">011&nbsp;842&nbsp;9697</a></p>
+              <p class="hours">Mon&ndash;Sun: 07:00&ndash;17:00</p>
+              <p><span class="status-pill" data-open-status></span></p>
+              <div class="actions">
+                <button type="button" class="btn btn-primary btn-small" data-show-on-map>Show on map</button>
+                <a class="btn btn-outline dark btn-small" href="https://www.google.com/maps/dir/?api=1&amp;destination=-26.0955,28.007" target="_blank" rel="noopener noreferrer">Get directions</a>
+              </div>
+            </div>
+          </article>
+          </div>
+
+          <div class="map" id="map" role="region" aria-label="Map of the two Kamado Car Wash branches">
+            <p class="map-fallback">The interactive map needs JavaScript. Open <a class="text-link" href="https://www.openstreetmap.org/?mlat=-26.1075&amp;mlon=28.0567#map=15/-26.1075/28.0567" target="_blank" rel="noopener noreferrer">Sandton on OpenStreetMap</a> or <a class="text-link" href="https://www.openstreetmap.org/?mlat=-26.0955&amp;mlon=28.007#map=15/-26.0955/28.007" target="_blank" rel="noopener noreferrer">Randburg on OpenStreetMap</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT FORM ============
+         After validation the message is sent with fetch() and compiled into an email
+         for the recipient set in js/common.js (Kamado.CONTACT_EMAIL). -->
+    <section class="section section-alt" id="message-section">
+      <div class="wrap">
+        <p class="eyebrow">Send a Message</p>
+        <h2 id="contact-form-title">General contact form</h2>
+        <p class="section-intro">Write your message and we will prepare an email to our team that you can send from your own email app.</p>
+
+        <form class="card-form" id="contact-form" action="https://jsonplaceholder.typicode.com/posts" method="post" aria-labelledby="contact-form-title">
+          <p class="form-note">Fields marked * are required.</p>
+
+          <div class="form-row">
+            <label for="c-name">Full name *</label>
+            <input type="text" id="c-name" name="fullName" autocomplete="name" placeholder="e.g. Musa Sibuyi" required minlength="2" maxlength="60" data-rule="name">
+          </div>
+
+          <div class="form-row">
+            <label for="c-email">Email address *</label>
+            <input type="email" id="c-email" name="email" autocomplete="email" placeholder="you@example.com" required maxlength="254" data-rule="email">
+          </div>
+
+          <div class="form-row">
+            <label for="c-phone">Phone number (optional)</label>
+            <input type="tel" id="c-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="071 234 5678" maxlength="20" data-rule="phone" pattern="(?:\+27|0027|0)[\s\-]?[1-9](?:[\s\-]?[0-9]){8}">
+          </div>
+
+          <div class="form-row">
+            <label for="c-branch">Which branch is this about? *</label>
+            <select id="c-branch" name="branch" required>
+              <option value="">Choose a branch</option>
+              <option value="sandton">Sandton</option>
+              <option value="randburg">Randburg</option>
+              <option value="both">Both / not sure</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="c-type">Type of message *</label>
+            <select id="c-type" name="messageType" required>
+              <option value="">Choose a message type</option>
+              <option value="general">General question</option>
+              <option value="compliment">Compliment</option>
+              <option value="complaint">Complaint</option>
+              <option value="media">Media or partnership</option>
+              <option value="lost">Lost property</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="c-subject">Subject *</label>
+            <input type="text" id="c-subject" name="subject" required minlength="5" maxlength="80" placeholder="e.g. Opening hours on public holidays">
+          </div>
+
+          <div class="form-row">
+            <label for="c-message">Message *</label>
+            <textarea id="c-message" name="message" rows="6" required minlength="10" maxlength="1000" placeholder="How can we help?"></textarea>
+            <p class="char-count" id="c-message-count" aria-hidden="true">0 / 1000</p>
+          </div>
+
+          <!-- Honeypot: people never see this field, spam bots fill it in -->
+          <div class="hp" aria-hidden="true">
+            <label for="c-website">Leave this field empty</label>
+            <input type="text" id="c-website" name="companyWebsite" tabindex="-1" autocomplete="off" data-hp>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Prepare my email</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-heading">Kamado Car Wash</p>
+        <p>Johannesburg's automated drive-through wash. Two lanes, five stages, one very clean car.</p>
+      </div>
+      <nav aria-label="Footer">
+        <p class="footer-heading">Site</p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="enquiry.html">Enquire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-heading">Visit</p>
+        <ul>
+          <li>Sandton &amp; Randburg</li>
+          <li>Open daily, 07:00&ndash;17:00</li>
+          <li><span class="status-pill" data-open-status></span></li>
+          <li>Sandton: <a href="tel:+27115550142">011&nbsp;555&nbsp;0142</a></li>
+          <li>Randburg: <a href="tel:+27118429697">011&nbsp;842&nbsp;9697</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      &copy; 2026 Kamado Car Wash.
+    </div>
+  </footer>
+</body>
+</html>
