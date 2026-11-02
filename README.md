@@ -368,3 +368,19 @@ JSONPlaceholder is a public **demonstration endpoint**: it accepts the request a
 - Protection of Personal Information Act 4 of 2013 (South Africa), informing the consent wording on the enquiry form.
 
 **Part 1 and Part 2 references:** [ADD YOUR EXISTING REFERENCES HERE]
+Part 1:
+MDN Web Docs (n.d.) HTML elements reference. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML/Element (Accessed: [13 August 2026]).
+MDN Web Docs (n.d.) <form>: The Form element. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form (Accessed: [12 August]).
+WHATWG (n.d.) HTML Living Standard. Available at: https://html.spec.whatwg.org/ (Accessed: [your date]).
+W3C (2023) Web Content Accessibility Guidelines (WCAG) 2.2. Available at: https://www.w3.org/TR/WCAG22/ (Accessed: [13 August]).
+Google (n.d.) Google Fonts: Bebas Neue. Available at: https://fonts.google.com/specimen/Bebas+Neue (Accessed: [13 august 2026]). Cite Work Sans and JetBrains Mono the same way, since the site uses all three.
+OpenStreetMap (n.d.) Copyright and licence. Available at: https://www.openstreetmap.org/copyright (Accessed: [13 August 2026]). Only include this if you mention the map from your first draft.
+
+Part2 :
+
+MDN Web Docs (n.d.) CSS grid layout. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout (Accessed: [16 September 2026]).
+MDN Web Docs (n.d.) CSS flexible box layout. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout (Accessed: [16 September]).
+MDN Web Docs (n.d.) Using media queries. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries (Accessed: [16 September 2026]).
+MDN Web Docs (n.d.) Using CSS custom properties (variables). Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties (Accessed: [16 September 2026]).
+MDN Web Docs (n.d.) clamp(). Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/clamp (Accessed: [16 September 2026]).
+MDN Web Docs (n.d.) :focus-visible. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible (Accessed: [16 September 2026]).
